@@ -2,6 +2,8 @@
 /*Title and Header*/
 $title = "LahoreBook | Home";
 require("config/layout/header.php");
+require ('config/db.php');
+require ('config/sections/includes/process.php');
 
 include ('config/sections/section_one.php');
 include ('config/sections/sec2.php');

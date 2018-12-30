@@ -1,12 +1,5 @@
-<?php 
-if(isset($_GET['register'])){
 
-}else if(isset($_GET['login'])){
-
-}
-
-?>
-            <!--register form -->
+          <!--register form -->
             <div class="main-register-wrap modal">
                 <div class="main-overlay"></div>
                 <div class="main-register-holder">
@@ -50,10 +43,10 @@ if(isset($_GET['register'])){
                                     <div id="tab-2" class="tab-content">
                                         <div class="custom-form">
 
-                                            <form method="POST" name="registerform" class="main-register-form" id="main-register-form2">
+                                           <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart-/form-data" name="registerform" class="main-register-form" id="main-register-form2">
+                                                <?php echo !empty($message) ? $message : ''; ?>
                                                 <label >First Name * </label>
-                                                <input name="input_first" type="text"   onClick="this.select()" value="">
-
+                                                <input name="input_first" type="text"   onClick="this.select()" value="<?php $_POST['input_first']; ?>">
                                                 <label>Last Name *</label>
                                                 <input name="input_last" type="text"  onClick="this.select()" value="">
                                                 <label>Email Address *</label>

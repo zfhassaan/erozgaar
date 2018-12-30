@@ -1,7 +1,15 @@
 <?php 
-	require ('config/functions.php');
-	require ('config/db.php');
-	require('config/sections/includes/process.php');
+	session_start();
+
+    $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+
+    if (strpos($url,'dash-index') !== false) {
+        require ('../config/functions.php');
+    } else {
+        require ('config/functions.php');
+    }
+    
 
  ?>
 <!DOCTYPE HTML>
@@ -14,14 +22,14 @@
 		<meta name="keywords" content=""/>
 		<meta name="description" content=""/>
 		<!-- ========== css ========== -->
-		<link type="text/css" rel="stylesheet" href="../cms/public/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="../cms/public/css/plugins.css">
-		<link rel="stylesheet" type="text/css" href="../cms/public/css/style.css">
-		<link rel="stylesheet" type="text/css" href="../cms/public/css/color.css">
+		<link type="text/css" rel="stylesheet" href="<?php echo BASE_URL; ?>public/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/plugins.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>public/css/color.css">
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- ========== favicon icon ========== -->
-		<link rel="shortcut icon" href="../cms/public/images/favicon.ico">
+		<link rel="shortcut icon" href="<?php echo BASE_URL; ?>public/images/favicon.ico">
 
 
 	</head>
@@ -58,7 +66,17 @@
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
                     <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
-                    <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+
+
+                        <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+                        if (strpos($url,'dash-index') !== false) {
+                            $html = "<div class='header-user-name'><span><img src='images/avatar/4.jpg' alt=''></span>Hello , Alisa</div> <ul> <li><a href='dashboard-myprofile.html'> Edit profile</a></li> <li><a href='dashboard-add-listing.html'> Add Listing</a></li> <li><a href='dashboard-bookings.html'>  Bookings  </a></li> <li><a href='dashboard-review.html'> Reviews </a></li> <li><a href=''>Log Out</a></li></ul>";
+                            echo $html;
+                        } else {
+                            echo '<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>';
+                        } ?>
+
+                    
                     <!-- nav-button-wrap-->
                     <div class="nav-button-wrap color-bg">
                         <div class="nav-button">

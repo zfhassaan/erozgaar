@@ -4,9 +4,11 @@
 	$ln = trim($_POST['ln']);		
 	$username = trim($_POST['username']);		
 	$password = md5(trim($_POST['password']));
+
 	if(strlen($fn) > 0 && strlen($ln) > 0 && strlen($username) > 0 && strlen(trim($_POST['password'])) > 0){
 		//if user is already registerd
 		$check = mysqli_query($con,"SELECT * FROM users WHERE Username='$username' ");
+
 		if(!$con ||mysqli_num_rows($check)==1){
 			echo '<p style="color: #9F6000;font-weight: bold;">Username is already taken. Try Different One.</p>';
 		}
