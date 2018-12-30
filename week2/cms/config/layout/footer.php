@@ -109,16 +109,30 @@
                 </div>
             </footer>
             <!--footer end  -->
-            <?php include ('config/sections/includes/registeration.php'); ?>
+
+            <?php 
+            $url = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+            if(strpos($url,'dash-index')!==false){
+                include ('../config/sections/includes/registeration.php');
+            }
+            else {
+                include ('config/sections/includes/registeration.php');
+            } ?>
             <a class="to-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <!-- Main end -->
 
-
-		<script type="text/javascript" src="public/js/jquery.min.js"></script>
-        <script type="text/javascript" src="public/js/plugins.js"></script>
-        <script type="text/javascript" src="public/js/scripts.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+        <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+                        if (strpos($url,'dash-index') !== false) {
+                            echo "<script type='text/javascript' src='../public/js/jquery.min.js'></script>
+                            <script type='text/javascript' src='../public/js/plugins.js'></script>
+                            <script type='text/javascript' src='../public/js/scripts.js'></script>";
+                        } else{
+                            echo "<script type='text/javascript' src='public/js/jquery.min.js'></script>
+                                  <script type='text/javascript' src='public/js/plugins.js'></script>
+                                  <script type='text/javascript' src='public/js/scripts.js'></script>
+                        		  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete'></script>";
+    }?>
 
 	</body>
 </html>

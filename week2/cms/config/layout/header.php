@@ -70,7 +70,7 @@
 
                         <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                         if (strpos($url,'dash-index') !== false) {
-                            $html = "<div class='header-user-name'><span><img src='images/avatar/4.jpg' alt=''></span>Hello , Alisa</div> <ul> <li><a href='dashboard-myprofile.html'> Edit profile</a></li> <li><a href='dashboard-add-listing.html'> Add Listing</a></li> <li><a href='dashboard-bookings.html'>  Bookings  </a></li> <li><a href='dashboard-review.html'> Reviews </a></li> <li><a href=''>Log Out</a></li></ul>";
+                            $html = "<div class='header-user-menu'><div class='header-user-name'><span><img src='images/avatar/4.jpg' alt=''></span>Hello , Alisa</div> <ul> <li><a href='dashboard-myprofile.html'> Edit profile</a></li> <li><a href='dashboard-add-listing.html'> Add Listing</a></li> <li><a href='dashboard-bookings.html'>  Bookings  </a></li> <li><a href='dashboard-review.html'> Reviews </a></li> <li><a href=''>Log Out</a></li></ul></div>";
                             echo $html;
                         } else {
                             echo '<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>';
