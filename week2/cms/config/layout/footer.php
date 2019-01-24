@@ -121,7 +121,12 @@
             <a class="to-top"><i class="fa fa-angle-up"></i></a>
         </div>
         <!-- Main end -->
-
+<script type="text/javascript">
+var url = window.location.href;
+if(url.indexOf('?error=') != -1 || url.IndexOf('/?error=') != -1) {
+$('#MyModal').modal('show');
+}
+</script>
         <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                         if (strpos($url,'dash-index') !== false) {
                             echo "<script type='text/javascript' src='../public/js/jquery.min.js'></script>

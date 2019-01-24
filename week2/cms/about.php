@@ -9,6 +9,7 @@ include ('config/sections/facts.php');
 include ('config/sections/about/our-team.php');
 include ('config/sections/about/need-more-info.php');
 include ('config/sections/testimonials.php');
+
 include ('config/sections/about/clients.php');
 include ('config/sections/questions_ask.php');
 

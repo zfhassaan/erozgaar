@@ -31,6 +31,8 @@
 		<!-- ========== favicon icon ========== -->
 		<link rel="shortcut icon" href="<?php echo BASE_URL; ?>public/images/favicon.ico">
 
+        
+
 
 	</head>
 	<body>
@@ -65,15 +67,69 @@
                         <button class="header-search-button" onclick="window.location.href='#'">Search</button>
                     </div>
                     <div class="show-search-button"><i class="fa fa-search"></i> <span>Search</span></div>
-                    <a href="dashboard-add-listing.html" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
+                    <a href="<?php echo !empty($_SESSION['first_name']) ? BASE_URL.'dashboard/dash-index.php' :  BASE_URL;
+                    ?>" class="add-list">Add Listing <span><i class="fa fa-plus"></i></span></a>
 
 
                         <?php $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-                        if (strpos($url,'dash-index') !== false) {
-                            $html = "<div class='header-user-menu'><div class='header-user-name'><span><img src='images/avatar/4.jpg' alt=''></span>Hello , Alisa</div> <ul> <li><a href='dashboard-myprofile.html'> Edit profile</a></li> <li><a href='dashboard-add-listing.html'> Add Listing</a></li> <li><a href='dashboard-bookings.html'>  Bookings  </a></li> <li><a href='dashboard-review.html'> Reviews </a></li> <li><a href=''>Log Out</a></li></ul></div>";
-                            echo $html;
-                        } else {
-                            echo '<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>';
+                        if (!empty($_SESSION['first_name']) ) {
+                                
+                                $html = strpos($url,'dash-index') !== false ? '
+                                <div class="header-user-menu">
+                                    <div class="header-user-name">
+                                        <span> <img src="../images/avatar/4.jpg" alt=""/> </span>
+                                        Hello, '.$_SESSION['first_name']."                                    </div>
+                                    <ul>
+                                        <li>
+                                            <a href='". BASE_URL.'dashboard/dash-index.php' ."'> Edit profile</a>
+                                        </li>
+                                        <li>
+                                            <a href=''> Add Listing</a>
+                                        </li> 
+                                        <li>
+                                            <a href='dashboard-bookings.html'>  Bookings  </a>
+                                        </li>
+                                        <li>
+                                            <a href='dashboard-review.html'> Reviews </a>
+                                        </li>
+                                        <li>
+                                            <a href='".BASE_URL.'logout.php'."'>Log Out</a>
+                                        </li>
+                                    </ul>
+                                </div>" 
+
+                                : 
+                                '<div class="header-user-menu">
+                                        <div class="header-user-name">
+                                            <span> <img src="images/avatar/4.jpg" alt=""/></span>
+                                            Hello, '.$_SESSION['first_name']." 
+                                        </div>
+                                         <ul>
+                                        <li>
+                                            <a href='". BASE_URL.'dashboard/dash-index.php' ."'> Edit profile</a>
+                                        </li>
+                                        <li>
+                                            <a href=''> Add Listing</a>
+                                        </li> 
+                                        <li>
+                                            <a href='dashboard-bookings.html'>  Bookings  </a>
+                                        </li>
+                                        <li>
+                                            <a href='dashboard-review.html'> Reviews </a>
+                                        </li>
+                                        <li>
+                                            <a href='".BASE_URL.'logout.php'."'>Log Out</a>
+                                        </li>
+                                    </ul>       
+                                </div>";
+                                echo $html;
+                        }
+                         else {
+                            echo '<div class="show-reg-form modal-open" onclick="$("#yourModal").modal({"backdrop": "static"})";><i class="fa fa-sign-in"></i>Sign In</div>';
+                            if(!empty($_SESSION['message'])){
+                            echo $_SESSION['message'];
+                            }
+                            
                         } ?>
 
                     
